@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14054205946230" configfile="/GestionPersonnels/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="Ajouter" x="122" y="178" id="pf14054238016021" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14054294043214" path="Ajouter.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Create" x="122" y="562" id="pf14054238016033" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" path="Create.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="test.xhtml" x="338" y="178" id="pf14054294043225" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14054294043214" path="/test.xhtml"/>
+  <links id="pf14054294043214" target="pf14054294043225" source="pf14054238016021" outcome="Create" redirect="true"/>
+</pageflow:Pageflow>

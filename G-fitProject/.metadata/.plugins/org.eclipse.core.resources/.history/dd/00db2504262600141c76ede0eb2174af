@@ -1,0 +1,51 @@
+.button{
+					float: right;
+					cursor: pointer;
+					width: 160px;
+					height: 42px;
+					padding: 10px 10px;
+					margin: 0 300px 0 0;
+					
+					border: 1px solid #275682;
+					border-radius: 21px;
+					
+					background-color: #0080FF;
+					
+					color:#effaff;
+					font-weight:bold;
+				}
+.button2{
+					float: right;
+					cursor: pointer;
+					width: 120px;
+					height: 32px;
+					
+					border-bottom-style:double;
+					border-bottom-color:black;
+					border-radius: 21px;
+					
+					background-color: #807F7F;
+					
+					color:#effaff;
+					font-weight:bold;
+				}
+.button2:hover{
+	color: buttonshadow;
+}
+
+#z{
+					float: right;
+					cursor: pointer;
+					width: 120px;
+					height: 32px;
+					
+					border-bottom-style:double;
+					border-bottom-color:black;
+					border-radius: 21px;
+					
+					background-color: #807F7F;
+					
+					color:#effaff;
+					font-weight:bold;
+				}
+

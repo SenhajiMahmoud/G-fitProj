@@ -1,0 +1,35 @@
+#container {
+   }
+#header {
+}
+#body{
+	
+}
+#footer {
+  		position:absolute;
+		bottom:0;
+		font-size:15px;
+		opacity:0.5;
+}
+.posAjout{
+					margin-left: 1040px;
+					font-weight:bold;
+					font-family: cursive;
+					font-style: italic;
+					
+}
+.pos{
+	margin-left:30px;
+	margin-top:10px;
+}
+#buttonn{
+				cursor: pointer;
+				width: 160px;
+				weight: 32px;
+				margin-left: 140px;
+				border: 1px solid #275682;
+				border-radius: 21px;
+				background-color: gray;
+				color:#effaff;
+				font-weight:bold;
+			}

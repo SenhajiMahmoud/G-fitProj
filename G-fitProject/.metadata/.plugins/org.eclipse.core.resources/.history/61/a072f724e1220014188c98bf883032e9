@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html >
+<html
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+	>
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Affichage</title>
+		<h:outputStylesheet library="des" name="table.css"/>
+		<h:outputStylesheet library="des" name="csslight.css"/>
+		<Script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></Script>
+		<h:outputStylesheet library="des" name="testBack.css"/>
+		<h:outputStylesheet library="des" name="boutton.css"  />
+		<h:outputStylesheet library="des" name="PageForm.css"/>
+		
+		<style>
+			.fieldset{
+				max-width: 240px;
+				max-height: 400px;
+				background-color: window;
+				opacity:0.7;
+			}
+			.textt:HOVER {
+				background-color: #FFEBCD;
+				color: black;
+			}
+		</style>
+	</h:head>
+	
+	<h:body>
+	<h:outputScript library="js" name="jquery.js"/>
+	<div id="container">
+		<div id="header">
+			<h:form >
+				<table >
+						<tr>
+							<td valign="top" width="100%"><h:commandLink action="#{employeBean.Actualiser}" value="Accueil"/></td>
+							<td valign="top" width="20%"><h:commandLink value="Déconnexion" action="#{employeBean.redirectionLogin}"/></td>
+						</tr>
+					</table>
+					<hr/>
+				</h:form>
+		</div>
+		<div id="body">
+		<h:graphicImage library="images" name="image002.gif"/>
+			<h:form>
+			<fieldset style="border-style: outset;" class="fieldset">
+					<legend>Recheche</legend>
+						<h:panelGrid columns="2">
+							<h:outputText value="Nom :  "/>
+							<h:inputText  value="#{employeBean.emp.nom}" styleClass="textt"/>
+							<h:outputText value="Prenom :  "/>
+							<h:inputText  value="#{employeBean.emp.prenom}" styleClass="textt"/>
+						</h:panelGrid>
+					<h:commandLink action="#{employeBean.RechercherNP2}">
+						<h:graphicImage library="images" name="recherche.png"/>
+					</h:commandLink>
+				</fieldset>
+					<br/>
+			<table>
+						<tr>
+							<td width="30%" valign="top" />
+							<td width="50%" valign="top">
+								<h:dataTable border="1" value="#{employeBean.list}" 
+												var="emp" 
+												style="width:900px" 
+												styleClass="order-table" 
+												headerClass="order-table-header"
+												rowClasses="order-table-odd-row,order-table-even-row"
+												cellpadding="7"
+												width="100%"
+												>
+										<f:facet name="header">
+											<h:outputText value="Tous les Employés"/>
+										</f:facet>
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Numéro" style="font-weight:bold"/>
+											</f:facet>
+												<h:outputText value="#{emp.id}" />
+										</h:column>
+										
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Nom" />
+											</f:facet>
+												<h:outputText value="#{emp.nom}" />
+										</h:column>
+										
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Prenom" />
+											</f:facet>
+												<h:outputText value="#{emp.prenom}" />
+										</h:column>
+										
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Sexe" />
+											</f:facet>
+												<h:outputText value="#{emp.sexe}" />
+										</h:column>
+										
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Date de Naissance" />
+											</f:facet>
+												<h:outputText value="#{emp.dateNaissance}" />
+										</h:column>	
+										
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Telephone" />
+											</f:facet>
+												<h:outputText value="#{emp.telephone}" />
+										</h:column>
+										
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Ville" />
+											</f:facet>
+												<h:outputText value="#{emp.ville}"  />
+										</h:column>
+										
+										<h:column>
+												<f:facet name="header">  
+													<h:outputText value="Action" />
+												</f:facet>
+													<h:commandLink action="#{employeBean.Delete(emp)}"> 
+														<h:graphicImage library="images" name="howtoimage.aspx.png"/>
+													</h:commandLink>
+													
+													<h:commandLink action="#{employeBean.redirect(emp)}">
+														<h:graphicImage library="images" name="opisanie.png"/>
+													</h:commandLink>
+													<h:commandLink action="#{employeBean.redirect2(emp)}" class="apercu">
+															<h:graphicImage library="images" name="apercu.png" />
+													</h:commandLink>
+											</h:column>
+								</h:dataTable>
+							</td>
+							<td width="20%" />
+					</tr>
+			</table>
+		</h:form>
+		</div>
+	</div>
+		
+		
+		
+		<div class="backdrop"/>
+			<div class="box" >
+				<div class="close">
+					<h:graphicImage library="images" name="close_popup.png"/>
+				</div>
+				<br/><br/><br/>
+					<fieldset style="border-style: outset;" >
+						<h:form>
+							<h:panelGrid columns="3">
+								<h:inputHidden value="#{employeBean.emp.id}" />
+								<h:inputHidden value="#{employeBean.emp.nom}"/>
+								<h:inputHidden value="#{employeBean.emp.prenom}"/>
+								
+								
+								<h:outputText value="Sexe :  " />
+								<h:inputText value="#{employeBean.emp.sexe}"  size="8" disabled="true"/><br/><br/>
+								
+								<h:outputText value="Date de Naissance :  "/>
+								<h:inputText value="#{employeBean.emp.dateNaissance}"  size="12" disabled="true"/><br/><br/>
+								
+								<h:outputText value="Telephone :  "/>
+								<h:inputText value="#{employeBean.emp.telephone}"  size="15" disabled="true"/><br/><br/>
+								
+								<h:outputText value="Ville :  "/>
+								<h:inputText value="#{employeBean.emp.ville}"  size="10" disabled="true"/><br/><br/>
+								
+								<h:outputText value="Email :  "/>
+								<h:inputText value="#{employeBean.emp.email}"  size="30" disabled="true"/><br/><br/><br/>
+								
+								<h:outputText value="Poste :  "/>
+								<h:inputText value="#{employeBean.emp.poste}"  size="20" disabled="true"/>
+								
+							</h:panelGrid>
+						</h:form>
+					</fieldset>
+			</div>	
+			
+			
+		<script type="text/javascript">
+		$(document).ready(function() {
+				console.log("ok");
+				
+				/* $('.apercu').on('click',function() {
+					console.log("ok2");
+					$('.backdrop, .box').css('display','block');
+			}); */
+			$('.close, .backdrop').click(function() {
+					$('.backdrop, .box').fadeOut("low");
+				});
+			});
+		</script>
+	</h:body>
+</html>

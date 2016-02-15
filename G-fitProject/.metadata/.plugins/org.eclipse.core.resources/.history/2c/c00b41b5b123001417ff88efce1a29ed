@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+	>
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Affichage</title>
+		<h:outputStylesheet library="des" name="table.css"/>
+		<h:outputStylesheet library="des" name="testBack.css"/>
+		<h:outputStylesheet library="des" name="PageForm.css"/>
+		<h:outputStylesheet library="des" name="waiting.css"/>
+		
+		<style>
+			.fieldset{
+				max-width: 240px;
+				background-color: window;
+				opacity:0.7;
+			}
+			.textt:HOVER {
+				background-color: #FFEBCD;
+				color: black;
+			}
+		</style>
+	</h:head>
+	
+	<h:body>
+	<h:outputScript library="js" name="jquery.js"/>
+	
+		<div id="container">
+			<div id="header" >
+				<h:form >
+				<table>
+						<tr>
+							<td valign="top" width="100%"><h:commandLink action="#{employeBean.Actualiser}" value="Accueil"/></td>
+							
+							<td valign="top" ><h:commandLink value="Déconnexion" action="#{employeBean.redirectionLogin}"/></td>
+						</tr>
+					</table>
+					<hr/>
+				</h:form>
+				
+			</div>
+		
+			<div id="body">
+			<h:graphicImage library="images" name="image002.gif"/>
+				<br/><br/>
+				<h:form>
+						<br/>
+						<table border="1">
+								<tr>
+									<td valign="top" width="30%">
+										<fieldset  style="border-style: outset;" class="fieldset">
+											<legend>Recherche</legend>
+												<h:panelGrid columns="2">
+													<h:outputText value="Nom :  "/>
+													<h:inputText  value="#{employeBean.nom}" styleClass="textt"/>
+													<h:outputText value="Prenom :  "/>
+													<h:inputText  value="#{employeBean.prenom}" styleClass="textt"/>
+												</h:panelGrid>
+												<h:commandButton value="Rechercher" action="#{employeBean.RechercherNP2}" style="float:right;" styleClass="buttonn"/>
+										</fieldset>
+									</td>
+									<td valign="top" width="60%">
+										<DIV style="width: 400px; height: 20px; text-align: center; float: right;font-size: xx-large;">Aucun enploye Avec ce nom</DIV>
+									</td>
+									<td valign="top" width="20%"></td>
+							</tr>
+					</table>
+				</h:form>
+			</div>
+		</div>
+	</h:body>
+</html>

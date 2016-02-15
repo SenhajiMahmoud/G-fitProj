@@ -1,0 +1,23 @@
+body {
+	background-image: url("images/imageprinci.jpg");
+}
+.text{
+	border-radius: 5px;
+}
+h1{
+	text-align: center; 
+	color: gray;
+	size: 20px;
+}
+p {
+	text-align: center; 
+	color: gray;
+	font-weight: bold;
+	font-size: 25px;
+}
+#k{
+	text-align: center; 
+	color: gray;
+	font-weight: bold;
+	font-size: 15px;
+}

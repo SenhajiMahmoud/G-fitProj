@@ -1,0 +1,8 @@
+INDEX VERSION 1.3+F:\Stage 2014\G-fitProject\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2725915247.index
+2096311113.index
+3958639293.index
+2706384591.index
+607443655.index
+2080354029.index
+854861542.index

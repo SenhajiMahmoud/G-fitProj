@@ -1,0 +1,24 @@
+#container {
+   }
+#header {
+}
+#body{
+	
+}
+#footer {
+  		position:absolute;
+		bottom:0;
+		font-size:15px;
+		opacity:0.5;
+}
+.posAjout{
+					margin-left: 1040px;
+					font-weight:bold;
+					font-family: cursive;
+					font-style: italic;
+					
+}
+.pos{
+	margin-left:10px;
+	margin-top:20px;
+}

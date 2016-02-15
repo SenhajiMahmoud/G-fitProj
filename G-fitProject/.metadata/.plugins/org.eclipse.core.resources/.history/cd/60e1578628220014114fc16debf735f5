@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+	>
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>LOGIN</title>
+		<h:outputStylesheet library="des" name="waiting.css"/>
+		<!-- <Script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></Script>-->
+		<h:outputStylesheet library="des" name="log.css"/>
+		<h:outputStylesheet library="des" name="PageForm.css"/>
+	</h:head>
+	<h:body>
+		<h:outputScript library="js" name="jquery.js"/>
+						<div class="back" />
+						<div class="wait">
+							<h:graphicImage library="images" name="MnyxU.gif"/>
+						</div>
+	
+					<script type="text/javascript">
+							$(document).ready(function() {
+								console.log("ok");
+								
+								 $(".d").on('click',function() { 
+									 console.log("ok2");
+									 $('.back,.wait').fadeIn("low");
+							 	});
+							});
+					</script>
+	
+	
+	
+	<div id="container">
+			<div id="header">
+				<h:form>
+						<h:commandLink value="Insciption" action="#{employeBean.redirectAjouter}" styleClass="insc"/>
+				</h:form>
+				<hr/>
+			</div>
+			<div id="body">
+				<h:form styleClass="pl">
+					<fieldset class="fieldset">
+						
+						
+							<h:panelGrid columns="2" style="margin-left:50px" cellpadding="5">
+							<h:outputText value="Login :"/>
+							<h:inputText value="#{employeBean.emp.email}" styleClass="textt"/>
+						
+							<h:outputText value="password :"/>
+							<h:inputSecret value="#{employeBean.emp.motDePasse}" styleClass="textt"/>
+							</h:panelGrid><br/>
+							<h:commandButton id="d" value="Se connecter" 
+											action="#{employeBean.authentifier(employeBean.emp.email,employeBean.emp.motDePasse)}" 
+											styleClass="d"
+											
+											style="
+											cursor: pointer;
+											width: 100px;
+											height: 32px;
+											margin-left: 140px;
+											border: 1px solid #275682;
+											border-radius: 21px;
+											
+											background-color: gray;
+											
+											color:#effaff;
+											font-weight:bold;
+											"
+											/>
+						
+					</fieldset>
+				</h:form>
+			</div>
+			<div id="footer">
+				copyright &#169; G-Fit / 2014
+			</div>
+		</div>
+	
+	</h:body>
+	</html>

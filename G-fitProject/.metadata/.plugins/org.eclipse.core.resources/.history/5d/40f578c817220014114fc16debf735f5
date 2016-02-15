@@ -1,0 +1,59 @@
+.pl {
+    margin-top: 200px;
+     margin-left: 400px;
+}
+.pl2 {
+    margin-top: 200px;
+     margin-left: 400px;
+}
+body {
+	background: url("images/logiinn.jpg");
+}
+.button{
+					cursor: pointer;
+					width: 100px;
+					height: 32px;
+					
+					margin-left: 120px;
+					
+					border: 1px solid #275682;
+					border-radius: 21px;
+					
+					background-color: gray;
+					
+					color:#effaff;
+					font-weight:bold;
+				}
+.button2{
+					cursor: pointer;
+					width: 100px;
+					height: 32px;
+					
+					margin-left: 140px;
+					
+					border: 1px solid #275682;
+					border-radius: 21px;
+					
+					background-color: gray;
+					
+					color:#effaff;
+					font-weight:bold;
+				}
+.fieldset
+{
+  background-color:transparent;
+  max-width:400px;
+  padding:100px;
+  border-radius:8px;
+  font-weight: bold;
+}
+.insc{
+	margin-left: 1240px;
+}
+.textt{
+	background-color:#C0C0C0;
+	border-radius:8px;
+	border-color: #C0C0C0;
+	border-style: outset;
+}
+				

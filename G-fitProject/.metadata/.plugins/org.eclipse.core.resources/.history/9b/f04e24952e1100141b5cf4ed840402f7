@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html">
+		<h:head>
+			<title>Ajouter Un Employee</title>
+			
+			
+			<style>
+				body{
+					background:url("/resources/Images/bg.png");
+					
+					}
+				.boutton{margin-left: 500px;}
+				h1{text-align: center;}
+				fieldset{ color: blue;
+							style="font-size: 20px"
+					}
+			</style>
+			
+			
+		</h:head>
+			<h1>l'Ajout d'un Employé</h1>
+			<h:body style="font-size: 80px">
+				<h:graphicImage library="Images" name="image002.gif" />
+				<h:form>
+					<h:messages errorStyle="color:red;"/>
+					
+					<fieldset>
+						<legend>Inscription</legend>
+						<h:panelGrid columns="3" cellpadding="4" style="margin:0 auto;">
+							
+							<h:outputLabel value="Nom : "/>
+							<h:inputText id="nom" value="#{employeBean.emp.nom}" required="true" requiredMessage="Veuillez entrer votre nom SVP"/>
+							<h:message for="nom" style="color:red;"/>
+							
+							<h:outputLabel value="Prenom : " />
+							<h:inputText id="prenom" value="#{employeBean.emp.prenom}"  required="true" requiredMessage="Veuillez entrer votre prenom SVP"/>
+							<h:message for="prenom" style="color:red;"/>
+							
+							<h:outputLabel value="Sexe : "/>
+							<h:selectOneRadio id="radio" value="#{employeBean.emp.sexe}">
+									<f:selectItem itemValue="Homme" itemLabel="Homme" />
+									<f:selectItem itemValue="Femme" itemLabel="femme" />
+							</h:selectOneRadio>
+							<h:message for="radio" style="color:red;"/>
+							
+							<h:outputLabel value="Date de Naissance : " />
+							<h:inputText id="dateNaissance" converterMessage="La date indiqué doit etre au format dd/MM/yyyy hh:mm:ss" 
+										value="#{employeBean.emp.dateNaissance}"  
+										required="true" 
+										requiredMessage="Veuillez saisir La date">
+												<f:convertDateTime pattern="dd/MM/yyyy hh:mm:ss" />
+							</h:inputText>
+							<h:message for="dateNaissance" />
+							
+							<h:outputLabel value="Ville : " />
+							<h:inputText id="ville" value="#{employeBean.emp.ville}"/>
+							<h:message for="ville" style="color:red;"/>
+							
+							<h:outputLabel value="Telephone : " />
+							<h:inputText id="tel" value="#{employeBean.emp.telephone}"/>
+							<h:message for="tel" style="color:red;"/>
+							
+						</h:panelGrid>
+						
+						<h:commandButton value="Envoyer" action="#{employeBean.creer}" styleClass="boutton"/>
+					</fieldset>
+				</h:form>
+			</h:body>
+</html>

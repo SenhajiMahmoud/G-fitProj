@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+	>
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Affichage</title>
+		<h:outputStylesheet library="des" name="table.css"/>
+		<h:outputStylesheet library="des" name="testBack.css"/>
+		<h:outputStylesheet library="des" name="PageForm.css"/>
+		<h:outputStylesheet library="des" name="waiting2.css"/>
+		<style>
+			.fieldset{
+				max-width: 240px;
+				background-color: window;
+				opacity:0.7;
+			}
+			.textt:HOVER {
+				background-color: #FFEBCD;
+				color: black;
+			}
+			
+			.but{
+					cursor: pointer;
+					width: 100px;
+					height: 32px;
+					margin-top:30px;
+					margin-left:40px;
+					
+					border-bottom-style:double;
+					border-bottom-color:black;
+					border-radius: 21px;
+					
+					background-color: #807F7F;
+					
+					color:#effaff;
+					font-weight:bold;
+			}
+		</style>
+	</h:head>
+	
+	<h:body>
+	<h:outputScript library="js" name="jquery.js"/>
+	
+		<div id="container">
+			<div id="header" >
+				<h:form >
+				<table>
+						<tr>
+							<td valign="top" width="100%"><h:commandLink action="#{employeBean.Actualiser}" value="Accueil"/></td>
+							
+							<td valign="top" ><h:commandLink value="Déconnexion" action="#{employeBean.redirectionLogin}"/></td>
+						</tr>
+					</table>
+					<hr/>
+				</h:form>
+				
+			</div>
+		
+			<div id="body">
+			<h:graphicImage library="images" name="image002.gif"/>
+				<br/><br/>
+				<h:form>
+						<br/>
+						<table>
+								<tr>
+									<td valign="top" width="30%">
+										<fieldset  style="border-style: outset;" class="fieldset">
+											<legend>Recherche</legend>
+												<h:panelGrid columns="2">
+													<h:outputText value="Nom :  "/>
+													<h:inputText  value="#{employeBean.nom}" styleClass="textt"/>
+													<h:outputText value="Prenom :  "/>
+													<h:inputText  value="#{employeBean.prenom}" styleClass="textt"/>
+												</h:panelGrid>
+												
+												<h:commandButton value="Rechercher" 
+																action="#{employeBean.RechercherNP2}" 
+																style="float:right;" styleClass="buttonn"/>
+												
+										</fieldset>
+									</td>
+									<td valign="top" width="50%">
+										<h:dataTable border="1" value="#{employeBean.list}" 
+														var="emp" 
+														style="width:900px" 
+														styleClass="order-table" 
+														headerClass="order-table-header"
+														rowClasses="order-table-odd-row,order-table-even-row"
+														cellpadding="7"
+														width="100%"
+														>
+												<f:facet name="header">
+													<h:outputText value="Tous les Employés"/>
+												</f:facet>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Numéro" style="font-weight:bold"/>
+													</f:facet>
+														<h:outputText value="#{emp.id}" />
+												</h:column>
+												
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Nom" />
+													</f:facet>
+														<h:outputText value="#{emp.nom}" />
+												</h:column>
+												
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Prenom" />
+													</f:facet>
+														<h:outputText value="#{emp.prenom}" />
+												</h:column>
+												
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Sexe" />
+													</f:facet>
+														<h:outputText value="#{emp.sexe}" />
+												</h:column>
+												
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Date de Naissance" />
+													</f:facet>
+														<h:outputText value="#{emp.dateNaissance}" />
+												</h:column>	
+												
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Telephone" />
+													</f:facet>
+														<h:outputText value="#{emp.telephone}" />
+												</h:column>
+												
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Ville" />
+													</f:facet>
+														<h:outputText value="#{emp.ville}"  />
+												</h:column>
+												<h:column>
+														<f:facet name="header">  
+															<h:outputText value="Action" />
+														</f:facet>
+															<h:commandLink action="#{employeBean.d(emp)}">
+																	<h:graphicImage library="images" name="howtoimage.aspx.png"/>
+															</h:commandLink>
+															
+															
+															<h:commandLink action="#{employeBean.redirect(emp)}">
+																<h:graphicImage library="images" name="opisanie.png"/>
+																
+															</h:commandLink>
+															
+															<h:commandLink action="#{employeBean.redirect2(emp)}">
+																<h:graphicImage library="images" name="apercu.png"/>
+															</h:commandLink>
+											</h:column>
+										</h:dataTable>
+									</td>
+									<td valign="top" width="20%"></td>
+							</tr>
+					</table>
+				</h:form>
+			</div>
+		</div>
+									<div class="back"/>
+											<div class="delete" >
+												<h:form>
+												<h:graphicImage library="images" name="exclama.png"/>
+													<p id="k">	Êtes-vous sûr de vouloir supprimer  <h:outputText value="#{employeBean.emp.nom}"/> ?</p>
+													<h:commandButton value="Oui" action="#{employeBean.Delete}" styleClass="but"/>
+													<INPUT type="button" class="but" value="Annuler" id="Annulerrr"/>
+												</h:form>
+											</div>
+											
+					<script type="text/javascript">
+							$(document).ready(function() {
+								console.log("ok");
+								
+								/*  $(".del").on('click',function() { 
+									 console.log("ok2");
+									 $('.back,.delete').fadeIn("low");
+							 	}); */
+								 $('.back,.z,#Annulerrr').on('click',function(){
+									 $('.back,.delete').fadeOut("low");
+								 });
+							});
+				</script>
+	</h:body>
+</html>

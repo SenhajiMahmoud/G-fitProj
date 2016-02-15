@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+	>
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>LOGIN</title>
+		<h:outputStylesheet library="des" name="log.css"/>
+		<h:outputStylesheet library="des" name="popErreurLog.css"/>
+	</h:head>
+	
+	<h:body>
+		<h:outputScript library="js" name="jquery.js"/>
+		<div class="backk"/>
+		<div class="boxx">
+				<fieldset class="fieldset">
+					<h:form>
+							<h:panelGrid columns="1" style="margin-left:20px; margin-top:22px; ">
+									<h:outputText value="Veuillez Verifier votre Login ou mot de passe !!!" style="color:#8B0000;margin-left:30px;"/><br/><br/>
+									
+							</h:panelGrid>	
+						<h:commandButton value="OK" action="#{employeBean.redirectionLogin}"  styleClass="button"/>
+					</h:form>
+				
+				</fieldset>
+		</div>
+		
+				<script type="text/javascript">
+							$(document).ready(function() {
+								console.log("ok");
+								$('.back,.z').on('click',function(){
+									 $('.back,.delete').fadeOut("low");
+								 });
+							});
+				</script>
+	</h:body>
+	</html>

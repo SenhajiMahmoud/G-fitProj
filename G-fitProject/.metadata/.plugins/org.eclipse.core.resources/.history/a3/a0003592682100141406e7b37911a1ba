@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html">
+		<h:head>
+			<title>Ajouter Un Employee</title>
+			<h:outputStylesheet library="des" name="design.css"  />
+			<h:outputStylesheet library="des" name="boutton.css"  />
+			<h:outputStylesheet library="des" name="PageForm.css"/>
+		</h:head>
+		
+			<h:body>
+		<div id="container">
+			<div id="header">
+				<h:form >
+				<table >
+						<tr>
+							<td valign="top" width="100%"><h:commandLink action="#{employeBean.Actualiser}" value="Accueil"/></td>
+							<td valign="top" width="40%"><h:commandLink value="Déconnexion" action="#{employeBean.redirectionLogin}"/></td>
+						</tr>
+					</table>
+					<hr/>
+				</h:form>
+			</div>
+			<div id="body">
+			<h:graphicImage library="images" name="image002.gif"/>
+			<h1>l'Ajout d'un Employé</h1>
+			<h:form>
+						<fieldset>
+							<legend>Inscription</legend>
+							<h:panelGrid columns="3" cellpadding="4" style="margin:0 auto;">
+								
+								<h:outputLabel value="Nom : " for="nom"> <span style="color: red;">*</span></h:outputLabel>
+								<h:inputText id="nom" value="#{employeBean.dir.nom}"  required="true" requiredMessage="Veuillez entrer votre nom SVP !!">
+									<f:ajax event="keyup" render="nom1"/>
+								</h:inputText>
+								<h:message id="nom1" for="nom" style="color:red;"/>
+								
+								
+								<h:outputLabel value="Prenom : " for="prenom"> <span style="color: red;">*</span></h:outputLabel>
+								<h:inputText id="prenom" value="#{employeBean.dir.prenom}"  required="true" requiredMessage="Veuillez entrer votre prenom SVP !!">
+									<f:ajax event="keyup" render="prenom1"/>
+								</h:inputText>
+								<h:message id="prenom1" for="prenom" style="color:red;"/>
+								
+								<h:outputLabel value="Sexe : " for="sexe"> <span style="color: red;">*</span></h:outputLabel>
+								<h:selectOneRadio id="sexe" value="#{employeBean.dir.sexe}">
+										<f:selectItem itemValue="Homme" itemLabel="Homme" />
+										<f:selectItem itemValue="Femme" itemLabel="Femme" />
+								</h:selectOneRadio>
+								<h:message for="sexe" style="color:red;"/>
+								
+								
+								
+								<h:outputLabel value="Date de Naissance : " for="dateNaissance"><span style="color: red;">*</span></h:outputLabel>
+								<h:inputText id="dateNaissance" value="#{employeBean.dir.dateNaissance}" validatorMessage=" date incorrect DD/MM/YYYY" maxlength="10" required="true" requiredMessage="Veuillez entrer votre date de Naissance !!">
+									<f:validateRegex pattern="^(((0[1-9])|(1\d)|(2\d)|(3[0-1]))\/(0[1-9]|1[0-2])\/(\d{4}))" />
+									<f:ajax event="keyup" render="dateNaissance1"/>
+								</h:inputText>
+								<h:message id="dateNaissance1" for="dateNaissance" style="color:red;"/>
+								
+								
+								<h:outputLabel value="Ville : "/>
+								<h:selectOneMenu id="ville" value="#{employeBean.dir.ville}">
+    								<f:selectItem itemValue="Fes" itemLabel="fes"/>
+    								<f:selectItem itemValue="Meknes" itemLabel="Meknes"/>
+    								<f:selectItem itemValue="Tanger" itemLabel="Tanger"/>
+    								<f:selectItem itemValue="Taza" itemLabel="Taza"/>
+    								<f:selectItem itemValue="Rabat" itemLabel="Rabat"/>
+    								<f:selectItem itemValue="Ifrane" itemLabel="Ifrane"/>
+								</h:selectOneMenu>
+								<h:message for="ville"/>
+								
+								
+								
+								<h:outputLabel value="Telephone : " for="tel"><span style="color: red;">*</span></h:outputLabel>
+								<h:inputText id="tel" value="#{employeBean.dir.telephone}" validatorMessage="06/05********" maxlength="10" required="true" requiredMessage="Veuillez entrer le Numéro de telephone !!">
+									<f:validateRegex pattern="^0[6|5][0-9]{8}$" />
+									<f:ajax event="keyup" render="tel1"/>
+								</h:inputText>
+								<h:message id="tel1" for="tel" style="color:red;"/>
+								
+								<h:outputLabel for="email">Adresse email <span style="color: red;">*</span></h:outputLabel>
+						        <h:inputText id="email" size="20" maxlength="60" validatorMessage="Invalide Exemple :sema_ma@hotmail.fr" value="#{employeBean.dir.email}" required="true" requiredMessage="Veuillez entrer l'E-mail !!">
+						        	<f:validateRegex pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]{2,}[.][a-zA-Z]+"/>
+						            <f:ajax  event="keyup" render="emailMessage" />
+						        </h:inputText>
+						        <h:message id="emailMessage" for="email" style="color:red;"/>
+						        
+						        
+						        <h:outputLabel for="motDePasse">Password :<span style="color: red;">*</span></h:outputLabel>
+						        <h:inputSecret id="motDePasse" size="20" maxlength="60" value="#{employeBean.dir.motDePasse}" required="true" />
+						        <h:message for="motDePasse" style="color:red;"/>
+						        
+							</h:panelGrid>
+							<h:commandButton value="Envoyer" action="#{employeBean.creer}" styleClass="button" />
+						</fieldset>
+					</h:form>
+		
+			</div>
+			<div id="footer">
+				copyright &#169; G-Fit / 2014
+			</div>
+		</div>
+					
+		</h:body>
+</html>

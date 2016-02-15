@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html >
+<html
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+	>
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Affichage</title>
+		<h:outputStylesheet library="des" name="table.css"/>
+		<h:outputStylesheet library="des" name="csslight.css"/>
+		<Script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></Script>
+		<h:outputStylesheet library="des" name="testBack.css"/>
+		<h:outputStylesheet library="des" name="boutton.css"  />
+		<h:outputStylesheet library="des" name="PageForm.css"/>
+		
+		<style>
+			.fieldset{
+				max-width: 240px;
+				max-height: 400px;
+				background-color: window;
+				opacity:0.7;
+			}
+			.textt:HOVER {
+				background-color: #FFEBCD;
+				color: black;
+			}
+		</style>
+	</h:head>
+	
+	<h:body>
+	<h:outputScript library="js" name="jquery.js"/>
+	<div id="container">
+		<div id="header">
+			<h:form >
+				<table>
+						<tr>
+							<td valign="top" width="100%"><h:commandLink action="#{employeBean.Actualiser3}" value="Accueil"/></td>
+							<td valign="top" ><h:commandLink value="Inscription" action="#{employeBean.redirectAjouter}"/></td>
+							<td valign="top" width="20%"><h:commandLink value="Déconnexion" action="#{employeBean.redirectionLogin}"/></td>
+						</tr>
+					</table>
+					<hr/>
+				</h:form>
+		</div>
+		<div id="body">
+			<h:graphicImage library="images" name="image002.gif"/>
+			<br/><br/>
+			<h:form>
+					<br/>
+			<table>
+						<tr>
+							<td width="30%" valign="top" >
+								<fieldset style="border-style: outset;" class="fieldset">
+									<legend>Recherche</legend>
+										<h:panelGrid columns="2">
+											<h:outputText value="Nom :  "/>
+											<h:inputText  value="#{employeBean.nom}" styleClass="textt"/>
+											<h:outputText value="Prenom :  "/>
+											<h:inputText  value="#{employeBean.prenom}" styleClass="textt"/>
+										</h:panelGrid>
+										
+										<h:commandButton value="Rechercher" 
+																action="#{employeBean.RechercherNPIns}" 
+																style="float:right;" styleClass="buttonn"/>
+								</fieldset>
+							</td>
+							<td width="50%" valign="top">
+								<h:dataTable border="1" value="#{employeBean.list}" 
+												var="emp" 
+												style="width:900px" 
+												styleClass="order-table" 
+												headerClass="order-table-header"
+												rowClasses="order-table-odd-row,order-table-even-row"
+												cellpadding="7"
+												width="100%"
+												>
+										<f:facet name="header">
+											<h:outputText value="Tous les Employés"/>
+										</f:facet>
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Numéro" style="font-weight:bold"/>
+											</f:facet>
+												<h:outputText value="#{emp.id}" />
+										</h:column>
+										
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Nom" />
+											</f:facet>
+												<h:outputText value="#{emp.nom}" />
+										</h:column>
+										
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Prenom" />
+											</f:facet>
+												<h:outputText value="#{emp.prenom}" />
+										</h:column>
+										
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Sexe" />
+											</f:facet>
+												<h:outputText value="#{emp.sexe}" />
+										</h:column>
+										
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Date de Naissance" />
+											</f:facet>
+												<h:outputText value="#{emp.dateNaissance}" />
+										</h:column>	
+										
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Telephone" />
+											</f:facet>
+												<h:outputText value="#{emp.telephone}" />
+										</h:column>
+										
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Ville" />
+											</f:facet>
+												<h:outputText value="#{emp.ville}"  />
+										</h:column>
+										
+										<h:column>
+												<f:facet name="header">  
+													<h:outputText value="Action" />
+												</f:facet>
+													<h:commandLink action="#{employeBean.d(emp)}"> 
+														<h:graphicImage library="images" name="howtoimage.aspx.png"/>
+													</h:commandLink>
+													
+													<h:commandLink action="#{employeBean.redirectInscr(emp)}">
+														<h:graphicImage library="images" name="opisanie.png"/>
+													</h:commandLink>
+													<h:commandLink action="#{employeBean.redirect2Inscr(emp)}">
+															<h:graphicImage library="images" name="apercu.png"/>
+													</h:commandLink>
+											</h:column>
+								</h:dataTable>
+							</td>
+							<td width="20%" />
+					</tr>
+			</table>
+		</h:form>
+		</div>
+	</div>
+		
+		
+		
+		<div class="backdrop"/>
+			<div class="box" >
+				<div class="close">
+					<h:graphicImage library="images" name="close_popup.png"/>
+				</div>
+					<p>
+						Modification de <h:outputText value="#{employeBean.emp.nom}"/>
+					</p>
+					<hr/>
+					
+					<fieldset>
+						<LEGEND>Modification</LEGEND>
+						<h:form >
+							<h:panelGrid columns="3" cellpadding="4" style="margin:0 auto;">
+								<h:inputHidden value="#{employeBean.emp.id}" />
+								<h:inputHidden value="#{employeBean.emp.nom}"/>
+								<h:inputHidden value="#{employeBean.emp.prenom}"/>
+								
+									<h:outputLabel value="Sexe : " for="sexe"> <span style="color: red;">*</span></h:outputLabel>
+									<h:selectOneRadio style="width:240px;height:10px;" id="sexe" value="#{employeBean.emp.sexe}">
+											<f:selectItem itemValue="Homme" itemLabel="Homme" />
+											<f:selectItem itemValue="Femme" itemLabel="Femme" />
+									</h:selectOneRadio>
+									<h:message for="sexe" style="color:red;"/>
+									
+									
+									
+									<h:outputLabel value="Date de Naissance : " for="dateNaissance"><span style="color: red;">*</span></h:outputLabel>
+									<h:inputText style="width:80px;height:20px;" id="dateNaissance" value="#{employeBean.emp.dateNaissance}" validatorMessage=" date incorrect DD/MM/YYYY" maxlength="10" required="true" requiredMessage="Veuillez entrer votre date de Naissance !!">
+										<f:validateRegex pattern="^(((0[1-9])|(1\d)|(2\d)|(3[0-1]))\/(0[1-9]|1[0-2])\/(\d{4}))" />
+										<f:ajax event="keyup" render="dateNaissance1"/>
+									</h:inputText>
+									<h:message id="dateNaissance1" for="dateNaissance" style="color:red;"/>
+									
+									
+									
+									
+									<h:outputLabel value="Ville : "/>
+										<h:selectOneMenu id="ville" value="#{employeBean.emp.ville}" style="width:200px;height:20px;">
+		    								<f:selectItem itemValue="Fes" itemLabel="fes"/>
+		    								<f:selectItem itemValue="Meknes" itemLabel="Meknes"/>
+		    								<f:selectItem itemValue="Tanger" itemLabel="Tanger"/>
+		    								<f:selectItem itemValue="Taza" itemLabel="Taza"/>
+		    								<f:selectItem itemValue="Rabat" itemLabel="Rabat"/>
+		    								<f:selectItem itemValue="Ifrane" itemLabel="Ifrane"/>
+										</h:selectOneMenu>
+									<h:message for="ville"/>
+									
+									
+									
+									<h:outputLabel value="Telephone : " for="tel"><span style="color: red;">*</span></h:outputLabel>
+									<h:inputText style="width:80px;height:20px;" id="tel" value="#{employeBean.emp.telephone}" validatorMessage="06/05********" maxlength="10" required="true" requiredMessage="Veuillez entrer le Numéro de telephone !!">
+										<f:validateRegex pattern="^0[6|5][0-9]{8}$" />
+										<f:ajax event="keyup" render="tel1"/>
+									</h:inputText>
+									<h:message id="tel1" for="tel" style="color:red;"/>
+									
+									<h:outputLabel for="email">Adresse E-mail <span style="color: red;">*</span></h:outputLabel>
+							        <h:inputText style="width:200px;height:20px;" id="email" size="35" maxlength="30" validatorMessage="Invalide Exemple :xxx@xx.xx" value="#{employeBean.emp.email}" required="true" requiredMessage="Veuillez saisir l'E-mail !!">
+							        	<f:validateRegex pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]{2,}[.][a-zA-Z]+"/>
+							            <f:ajax  event="keyup" render="emailMessage" />
+							        </h:inputText>
+							        <h:message id="emailMessage" for="email" style="color:red;"/>
+							        
+							        <h:outputLabel value="Poste : " for="poste"/>
+										<h:selectOneMenu id="poste" value="#{employeBean.emp.poste}" style="width:200px;height:30px;">
+		    								<f:selectItem itemValue="Responsable RH" itemLabel="Responsable RH"/>
+		    								<f:selectItem itemValue="Developpeur" itemLabel="Developpeur"/>
+		    								<f:selectItem itemValue="Chef Projets" itemLabel="Chef Projets"/>
+										</h:selectOneMenu>
+									<h:message for="poste"/>
+									
+									
+								</h:panelGrid>
+							<br/>
+								
+							</h:form>
+							<h:commandButton value="Modifier" action="#{employeBean.Update2}"  styleClass="button2"/>
+								<h:commandButton value="Annuler" styleClass="annuler" style="float: right;
+																							cursor: pointer;
+																							width: 120px;
+																							height: 32px;
+																							
+																							border-bottom-style:double;
+																							border-bottom-color:black;
+																							border-radius: 21px;
+																							
+																							background-color: #807F7F;
+																							
+																							color:#effaff;
+																							font-weight:bold;"/>
+						</fieldset>
+			</div>	
+			
+			
+		<script type="text/javascript">
+			$(document).ready(function() {
+				console.log("ok");
+				$('.close, .backdrop, .annuler').click(function() {
+					$('.backdrop, .box').fadeOut("low");
+				
+				});
+			});
+		</script>
+	</h:body>
+</html>

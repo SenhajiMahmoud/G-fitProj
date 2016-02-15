@@ -1,0 +1,36 @@
+.backk{
+		position: absolute;
+		background-color: #000;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		opacity:0.3;
+		z-index: 50;
+		display: block;
+		}
+
+.boxx{
+	position: absolute;
+	top: 240px;
+	left: 450px;
+	width: 500px;
+	height: 200px;
+	background-color:#FFFFCC;
+	z-index: 51;
+	padding: 10px;
+	border-radius:5px;
+	box-shadow:0px 0px 20px black;
+	display: block;
+}
+.close{
+	margin-left: 960px;
+	margin-top:-200px;
+	cursor: pointer;
+	font-size: 10px;
+	font-weight: bold;
+}
+.posText{
+	margin-left:100px; 
+	margin-top:40px;
+}

@@ -1,0 +1,24 @@
+h1 {
+		text-align: center;
+		color: gray;
+		font: 3.5em normal Georgia, 'Times New Roman', Times, serif;
+		padding: 20px;
+		margin: 0;
+	}
+body {
+	margin: 0; padding: 0;
+	font: normal 15px Verdana, Arial;
+	line-height: 1.8em;
+	min-width: 980px;
+	background-image: url("images/imageprinci.jpg");
+}
+legend {
+	font:Verdana, Geneva, sans-serif;
+	font-size:18px;
+	color:#445668;
+	background-color:#E6F2FF;
+	border:1px solid;
+	border-color:#000000;
+	padding:5px 10px 5px 10px;
+	border-radius: 5px;
+}
